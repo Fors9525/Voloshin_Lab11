@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lb_11_1/2</title>
+</head>
+<body>
+    <h3>Lb_11_1/2</h3>
+    <input type="text" id="inputField" placeholder="[text here]">
+    <div id="message">Enter the text</div>
+    <button onclick="validateInput()">Submit</button>
+    <script>
+        
+        const messageDiv = document.getElementById('message');
+        const inputField = document.getElementById('inputField');
+
+        // Timer for displaying warning messages
+        let timer;
+        function startWarningTimer() {
+            timer = setTimeout(() => {
+                messageDiv.innerText = "Still waiting for text...";
+            }, 5000); // 1 minute
+        }
+        function resetWarningTimer() {
+            clearTimeout(timer);
+            messageDiv.innerText = "Enter the text";
+        }
+
+        // Validate input on submit
+        function validateInput() {
+            const inputValue = inputField.value.trim();
+            const regex = /^[a-zA-Z]+$/; // Only Latin letters allowed
+
+            if (!inputValue) {
+                messageDiv.innerText = "No input";
+            } else if (!regex.test(inputValue)) {
+                messageDiv.innerText = "Input invalid (Latin only)";
+            } else {
+                messageDiv.innerText = "Input valid";
+            }
+        }
+
+        // Add event listener to reset timer on typing
+        inputField.addEventListener('input', resetWarningTimer);
+        // Start the timer when the page loads
+        startWarningTimer();
+
+    </script>
+</body>
+</html>

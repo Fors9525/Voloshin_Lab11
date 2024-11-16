@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Validation Example</title>
+</head>
+<body>
+    <h3>Form Validation</h3>
+    <div id="message">Enter the text</div>
+    <button onclick="validateInput()">Submit</button>
+    <script>
+        
+        function Student(name, surname, age, course) {
+            this.name = name;       
+            this.surname = surname; 
+            this.age = age;         
+            this.course = course;  
+
+            this.GetOlder = function(years) {
+                if (years > 0) {
+                    this.age += years;
+                } else {
+                    console.log("err");
+                }
+            };
+
+            this.ChangeSurname = function(newSurname) {
+                if (newSurname && typeof newSurname === "string") {
+                    this.surname = newSurname;
+                } else {
+                    console.log("err");
+                }
+            };
+
+            this.MoveToSecondCourse = function() {
+                this.course += 1;
+            };
+        }
+
+        const student1 = new Student("Name", "Surname", 18, 2);
+
+        messageDiv.innerText.log(student1)
+
+        student1.GetOlder(1);
+        student1.ChangeSurname("Newsurname");
+        student1.MoveToSecondCourse();
+
+        console.log(student1)
+
+    </script>
+</body>
+</html>
+
+
